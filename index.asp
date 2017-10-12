@@ -45,20 +45,20 @@ if MsgType="event" then
      			case event_beef_future 
 			  'strsend=get_resourcelist(FromUserName,ToUserName)
 			  'strsend=bp_multi_items(FromUserName,ToUserName,"",news_beef_future)
-			  		strsend=bp(FromUserName,ToUserName,title_beef,desc_beef,pic_beef,news_beef_future)
+			  		strsend=bp(FromUserName,ToUserName,title_beef_future,desc_beef_future,pic_beef,news_beef_future)
      			case event_beef_spot
-			  		strsend=bp(FromUserName,ToUserName,title_beef,desc_beef,pic_beef,news_beef_spot)
+			  		strsend=bp(FromUserName,ToUserName,title_beef_spot,desc_beef_spot,pic_beef,news_beef_spot)
 			 	case event_pork_future
 			  'strsend=bp(FromUserName,ToUserName,news_beef_future, eventkey)
-			  		strsend=bp(FromUserName,ToUserName,title_pork,desc_pork,pic_pork,news_pork_future)
+			  		strsend=bp(FromUserName,ToUserName,title_pork_future,desc_pork_future,pic_pork,news_pork_future)
 			 	case event_pork_spot
-			  		strsend=bp(FromUserName,ToUserName,title_pork,desc_pork,pic_pork,news_pork_spot)
+			  		strsend=bp(FromUserName,ToUserName,title_pork_spot,desc_pork_spot,pic_pork,news_pork_spot)
 				case event_pork_product
 			  'nickname=get_nickname(FromUserName)
 			 'strsend=post_template(FromUserName,ToUserName,nickname)	
-			  		strsend=bp(FromUserName,ToUserName,title_chicken,desc_chicken,pic_chicken,news_pork_product)	 
+			  		strsend=bp(FromUserName,ToUserName,title_pork_product,desc_pork_product,pic_pork,news_pork_product)	 
 				case event_beef_product	
-			  		strsend=bp(FromUserName,ToUserName,title_chicken,desc_chicken,pic_chicken,news_beef_product)	 			  		
+			  		strsend=bp(FromUserName,ToUserName,title_beef_product,desc_beef_product,pic_beef,news_beef_product)	 			  		
 			end select
 
 		else  '没有标签返回提示信息'
@@ -91,12 +91,30 @@ Elseif msgtype="text" then
 				strsend=get_tag_list(fromusername,ToUserName)
 			case code_get_self_tag		'取得自己的标签'
 				strsend=get_self_tag(fromusername,ToUserName)	
+			'case "userlist"
+				'strsend=send_text(fromusername,ToUserName,get_all_users())
+			case "black"    			'设置所有人为黑名单'
+				strsend=set_black_list_by_tag(fromusername,tousername,0,"B")	
+			case "unblack"    			'取消所有黑名单'
+				strsend=set_black_list_by_tag(fromusername,tousername,0,"W")				
+			case "settag"				'给黑名单上的人设置标签'
+				strsend=set_tag_to_users(fromusername,tousername,tag_blacklist)	
+			case "bltag"				'给标签组里的人设置为黑名单'
+				strsend=set_black_list_by_tag(fromusername,tousername,tag_blacklist,"B")	
+			case "wltag"				'取消标签组里人的黑名单'
+				strsend=set_black_list_by_tag(fromusername,tousername,tag_blacklist,"W")						
 			'case "black"    			'设置自己为黑名单'
 				'strsend=set_black_list(fromusername,tousername,"")	
 			'case "getbl"
 				'strsend=get_black_list(fromusername,tousername)	
 			case else
 				'strsend=send_text(fromusername,tousername,Content)
+				prestr=left(content,4)
+				if prestr=code_set_template_title then
+					strsend=set_template_title(fromusername,tousername,right(Content,len(content)-5))
+				elseif prestr=code_set_template_brief then
+					strsend=set_template_brief(fromusername,tousername,right(Content,len(content)-5))
+				end if
 		end select
 	'else
 		'strsend=send_text(fromusername,tousername,Content)

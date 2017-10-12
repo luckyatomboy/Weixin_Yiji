@@ -16,11 +16,13 @@ dim code_get_news_list: code_get_news_list="newslist" '取得图文消息列表'
 dim code_test_mbxx: code_test_mbxx="mbxx" '发送模板消息'
 dim code_get_tag_list: code_get_tag_list="taglist" '取得所有标签列表'
 dim code_get_self_tag: code_get_self_tag="selftag" '取得自己的标签列表'
+dim code_set_template_title: code_set_template_title="szbt" '设置模板消息标题'
+dim code_set_template_brief: code_set_template_brief="szjj" '设置模板消息简介'
 
 'Tag ID 一定要用数字，不能用字符串！
 'dim tag_beef:tag_beef=100  '牛肉'
 'dim tag_pork:tag_pork=101  '猪肉'
-dim tag_blacklist:tag_blacklist=100  '黑名单
+dim tag_blacklist:tag_blacklist=116  '黑名单
 dim tag_admin:tag_admin=115  '管理员
 
 'URL'
@@ -71,6 +73,8 @@ dim msg_bpclose_success: msg_bpclose_success="报盘关闭成功！"
 dim msg_bpopen_success: msg_bpopen_success="报盘打开成功！"
 dim msg_empty_tag: msg_empty_tag="您没有权限查看报盘，请联系客服申请开通权限！"
 dim msg_new_user: msg_new_user="欢迎您关注上海一骥！您现在还没有权限查看报盘，请联系客服申请开通权限！"
+dim msg_template_title: msg_template_title="模板消息标题设置成功！"
+dim msg_template_brief: msg_template_brief="模板消息简介设置成功！"
 
 '图片url'
 dim pic_pork: pic_pork="http://www.yj-food.com/weixin/pork.jpg"
@@ -78,13 +82,21 @@ dim pic_beef: pic_beef="http://www.yj-food.com/weixin/cow.jpg"
 dim pic_chicken: pic_chicken="http://www.yj-food.com/weixin/chicken_single.jpg"
 
 '描述'
-dim desc_pork: desc_pork="猪肉报盘已更新，快点我查看吧！"
-dim desc_beef: desc_beef="牛肉报盘已更新，快点我查看吧！"
-dim desc_chicken: desc_chicken="鸡肉报盘已更新，快点我查看吧！"
+dim desc_pork_future: desc_pork_future="猪鸡期货报盘已更新，快点我查看吧！"
+dim desc_pork_spot: desc_pork_spot="猪鸡现货报盘已更新，快点我查看吧！"
+dim desc_beef_future: desc_beef_future="牛羊期货报盘已更新，快点我查看吧！"
+dim desc_beef_spot: desc_beef_spot="牛羊现货报盘已更新，快点我查看吧！"
+dim desc_pork_product: desc_pork_product="零担散货猪肉报盘已更新，快点我查看吧！"
+dim desc_beef_product: desc_beef_product="零担散货牛肉报盘已更新，快点我查看吧！"
+'dim desc_chicken: desc_chicken="鸡肉报盘已更新，快点我查看吧！"
 
 'Title'
-dim title_pork: title_pork="猪肉报盘"
-dim title_beef: title_beef="牛肉报盘"
-dim title_chicken: title_chicken="鸡肉报盘"
+dim title_pork_future: title_pork_future="猪鸡期货报盘"
+dim title_pork_spot: title_pork_spot="猪鸡现货报盘"
+dim title_beef_future: title_beef_future="牛羊期货报盘"
+dim title_beef_spot: title_beef_spot="牛羊现货报盘"
+dim title_pork_product: title_pork_product="零担散货猪肉报盘"
+dim title_beef_product: title_beef_product="零担散货牛肉报盘"
+'dim title_chicken: title_chicken="鸡肉报盘"
 
 %>

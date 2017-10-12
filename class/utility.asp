@@ -47,20 +47,6 @@ function clear_cache()
 	application.contents.removeall()
 end function
 
-'application中的变量有效期有限，大概是20分钟，如果没有用户访问，系统会自动删除变量'
-'所以，不能把报盘status放在application中，要放在script.dictionary中'
-function set_cache_sysdb(byval t0,byval t1)
-	if sysdb.exists(t0) then
-		sysdb.item(t0)=t1
-	else
-		sysdb.add t0, t1
-	end if
-end function
-
-function load_cache_sysdb(byval t0)
-	load_cache_sysdb=sysdb.item(t0)
-end function
-
 function send_news(byval fromuser, byval touser, byval title, byval description, byval picurl, byval url)
 	send_news="<xml>" &_
 	"<ToUserName><![CDATA["&fromuser&"]]></ToUserName>" &_
