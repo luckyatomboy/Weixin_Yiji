@@ -71,9 +71,13 @@ if MsgType="event" then
 Elseif msgtype="text" then
 'strsend=text(fromusername,tousername,Content)
 	if check_admin_tag(fromusername)="true" then    '检查是否在管理员组里，如果是才有权限输入特定代码'
+		MsgID=xml_dom.getelementsbytagname("MsgId").item(0).text 
 		select case content
 			case code_send_template   '群发模板消息'
-				strsend=send_template_to_all_users(FromUserName,ToUserName)
+				if load_cache("msgid")<>MsgID then
+					set_cache "msgid", MsgID			
+					strsend=send_template_to_all_users(FromUserName,ToUserName)
+				end if
 			case code_close_bp	'关闭报盘'
 				strsend=closebp(fromusername,tousername)
 			case code_open_bp	'打开报盘'
@@ -102,7 +106,12 @@ Elseif msgtype="text" then
 			case "bltag"				'给标签组里的人设置为黑名单'
 				strsend=set_black_list_by_tag(fromusername,tousername,tag_blacklist,"B")	
 			case "wltag"				'取消标签组里人的黑名单'
-				strsend=set_black_list_by_tag(fromusername,tousername,tag_blacklist,"W")						
+				strsend=set_black_list_by_tag(fromusername,tousername,tag_blacklist,"W")		
+			case "msgid"
+				'if load_cache("msgid")="abc" then
+					'set_cache "msgid", "b"
+				'end if
+				strsend=send_text(fromusername,tousername,load_cache("msgid"))
 			'case "black"    			'设置自己为黑名单'
 				'strsend=set_black_list(fromusername,tousername,"")	
 			'case "getbl"

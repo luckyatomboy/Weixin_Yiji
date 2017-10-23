@@ -20,18 +20,11 @@ function send_template_to_all_users(fromusername,tousername)
 		result=get_all_users()
 		blacklist=get_black_list()
 		set json=toobject(result)
-'先给该管理员发送消息，以免微信服务器长时间没有响应，会重复发三遍'		
-		strmsg=post_template(fromusername,tousername,"")
-'然后再给所有人发模板消息'
+'给所有人发模板消息'
 		for i=0 to json.data.openid.length-1
 			userid=getitem(json.data.openid,i)
 			if instr(blacklist,userid) = 0 then '检查是否是黑名单上的人，如果是就不发'
-				'white=white+1
-				if userid<>fromusername then '如果发送人数超过50人左右，就会响应时间过长'
-					'for j=0 to 50
-					strmsg=post_template(userid,tousername,"")
-					'next
-				end if
+				strmsg=post_template(userid,tousername,"")	
 			end if
 		next
 		'send_template_to_all_users=send_text(fromusername,tousername,white)
@@ -112,7 +105,7 @@ function post_template(fromusername,tousername,byuser)
 		http.open "POST",url,false
 		http.setRequestHeader "Content-Type","application/x-www-form-urlencoded"
 		http.send(str)
-		result=http.responseText
+		'result=http.responseText
 		set http=nothing
 		post_template=""
 end function
