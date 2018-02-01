@@ -18,6 +18,7 @@ dim code_get_tag_list: code_get_tag_list="taglist" '取得所有标签列表'
 dim code_get_self_tag: code_get_self_tag="selftag" '取得自己的标签列表'
 dim code_set_template_title: code_set_template_title="szbt" '设置模板消息标题'
 dim code_set_template_brief: code_set_template_brief="szjj" '设置模板消息简介'
+dim code_set_template_remark: code_set_template_remark="szbz" '设置模板消息备注'
 
 'Tag ID 一定要用数字，不能用字符串！
 'dim tag_beef:tag_beef=100  '牛肉'
@@ -75,6 +76,7 @@ dim msg_empty_tag: msg_empty_tag="您没有权限查看报盘，请联系客服�
 dim msg_new_user: msg_new_user="欢迎您关注上海一骥！您现在还没有权限查看报盘，请联系客服申请开通权限！"
 dim msg_template_title: msg_template_title="模板消息标题设置成功！"
 dim msg_template_brief: msg_template_brief="模板消息简介设置成功！"
+dim msg_template_remark: msg_template_remark="模板消息备注设置成功！"
 
 '图片url'
 dim pic_pork: pic_pork="http://www.yj-food.com/weixin/pork.jpg"

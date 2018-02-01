@@ -91,6 +91,7 @@ Elseif msgtype="text" then
 				strsend=get_resourcelist(fromusername,tousername)
 			case code_test_mbxx			'单独发送模板消息'
 				strsend=post_template(FromUserName,ToUserName,"")
+				'strsend=send_text(fromusername,tousername,"mbxx")
 			case code_get_tag_list		'取得所有标签列表'
 				strsend=get_tag_list(fromusername,ToUserName)
 			case code_get_self_tag		'取得自己的标签'
@@ -123,6 +124,8 @@ Elseif msgtype="text" then
 					strsend=set_template_title(fromusername,tousername,right(Content,len(content)-5))
 				elseif prestr=code_set_template_brief then
 					strsend=set_template_brief(fromusername,tousername,right(Content,len(content)-5))
+				elseif prestr=code_set_template_remark then
+					strsend=set_template_remark(fromusername,tousername,right(Content,len(content)-5))					
 				end if
 		end select
 	'else

@@ -63,7 +63,7 @@ function get_resourcelist(fromusername,tousername)
 	dim str:str="" 
 		str=str&"{"
 		str=str&"""type"":""news"","
-		str=str&"""offset"":5,"
+		str=str&"""offset"":0,"
 		str=str&"""count"":1"
 		str=str&"}"
 	dim http, strMsg, result, itemtext
@@ -84,7 +84,7 @@ end function
 
 function post_template(fromusername,tousername,byuser)
 	'response.write ""
-	dim access_token
+	dim access_token, remark
 	access_token=get_token()
 	dim url:url="https://api.weixin.qq.com/cgi-bin/message/template/send?access_token="&access_token
 	dim str:str="" 
@@ -98,7 +98,12 @@ function post_template(fromusername,tousername,byuser)
 		'str=str&"""first"":{""value"":""尊敬的客户，新的报盘已生成，请点击菜单查看\n\r"",""color"":""#173177""},"
 		str=str&"""keyword1"":{""value"":""上海一骥报盘""},"
 		str=str&"""keyword2"":{""value"":"""&load_cache("template_brief")&"""},"
-		str=str&"""remark"":{""value"":""\n\r欢迎“讨价还价”"",""color"":""#FF0000""}"
+		str=str&"""remark"":{""value"":""\n\r欢迎“讨价还价”"
+		remark=load_cache("template_remark")
+		if remark<>"" then
+			str=str&"\n\r\n\r"&remark
+		end if
+		str=str&""",""color"":""#FF0000""}"
 		str=str&"}}"
 	dim http, strMsg, result
 	set http=server.createobject(xmlhttp)
@@ -108,6 +113,7 @@ function post_template(fromusername,tousername,byuser)
 		'result=http.responseText
 		set http=nothing
 		post_template=""
+		'post_template=send_text(fromusername,tousername,load_cache("template_title"))
 end function
 
 function set_black_list(fromusername,tousername)
@@ -243,7 +249,7 @@ function get_tag_list(fromusername,ToUserName)
 end function
 
 function set_template_title(fromusername,ToUserName,title)
-	dim nickname:nickname=get_nickname(fromusername)
+	'dim nickname:nickname=get_nickname(fromusername)
 	set_cache "template_title",title
 	'set_cache "template_title_date",now()
 	'set_cache "template_title_changer",nickname
@@ -251,11 +257,18 @@ function set_template_title(fromusername,ToUserName,title)
 end function
 
 function set_template_brief(fromusername,ToUserName,brief)
-	dim nickname:nickname=get_nickname(fromusername)
+	'dim nickname:nickname=get_nickname(fromusername)
 	set_cache "template_brief",brief
 	'set_cache "template_brief_date",now()
 	'set_cache "template_brief_changer",nickname
 	set_template_brief=send_text(fromusername,ToUserName,msg_template_brief)
+end function
+
+function set_template_remark(fromusername,ToUserName,remark)
+	set_cache "template_remark",remark
+	'set_cache "template_title_date",now()
+	'set_cache "template_title_changer",nickname
+	set_template_remark=send_text(fromusername,ToUserName,msg_template_remark)
 end function
 
 function set_black_list_multiple(openid_list,direction)
