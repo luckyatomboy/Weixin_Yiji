@@ -60,7 +60,9 @@ dim news_beef_spot:news_beef_spot="http://mp.weixin.qq.com/s?__biz=MzI4MDc0MTEyM
 dim news_pork_future:news_pork_future="http://mp.weixin.qq.com/s?__biz=MzI4MDc0MTEyMg==&mid=100000113&idx=1&sn=aa8bda9870453b92befe4fdfb04c1237&chksm=6bb2951c5cc51c0ab9270ec5c96017595951287e56a770680bea767f740ea3741f0125749a91#rd"
 
 '猪肉现货'	done
-dim news_pork_spot:news_pork_spot="http://mp.weixin.qq.com/s?__biz=MzI4MDc0MTEyMg==&mid=100000112&idx=1&sn=3b7a795740e788228de78d8957bbd5f4&chksm=6bb2951d5cc51c0bedc1163207903c19f3399872c77e49a33e5ed970734192f873fb20b9586a#rd"
+dim news_pork_spot:news_pork_spot="http://mp.weixin.qq.com/s?__biz=MzI4MDc0MTEyMg==&mid=100000223&idx=1&sn=67a455adfb16a44242e1fed8213808e9&chksm=6bb295b25cc51ca4ca59778c3ab2e601ff90b4dac135e31adcda35db8640747c78661f667630#rd"
+
+'s?__biz=MzI4MDc0MTEyMg==&mid=100000112&idx=1&sn=3b7a795740e788228de78d8957bbd5f4&chksm=6bb2951d5cc51c0bedc1163207903c19f3399872c77e49a33e5ed970734192f873fb20b9586a#rd"
 
 '零担猪肉'	done
 dim news_pork_product:news_pork_product="http://mp.weixin.qq.com/s?__biz=MzI4MDc0MTEyMg==&mid=100000115&idx=1&sn=fe7ba65458029198189eadd921bbbb51&chksm=6bb2951e5cc51c08ef68acaa862eb44e13a6184e46adcfbcf43c37addca0042d3275220b7354#rd"
