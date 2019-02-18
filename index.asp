@@ -42,23 +42,18 @@ if MsgType="event" then
     if strEventType="CLICK" then
      	if check_empty_tag(fromusername)="false" then  '检查用户是否有标签，如果有标签才能查看报盘'
      		select case EventKey
-     			case event_beef_future 
-			  'strsend=get_resourcelist(FromUserName,ToUserName)
-			  'strsend=bp_multi_items(FromUserName,ToUserName,"",news_beef_future)
-			  		strsend=bp(FromUserName,ToUserName,title_beef_future,desc_beef_future,pic_beef,news_beef_future)
-     			case event_beef_spot
-			  		strsend=bp(FromUserName,ToUserName,title_beef_spot,desc_beef_spot,pic_beef,news_beef_spot)
-			 	case event_pork_future
-			  'strsend=bp(FromUserName,ToUserName,news_beef_future, eventkey)
-			  		strsend=bp(FromUserName,ToUserName,title_pork_future,desc_pork_future,pic_pork,news_pork_future)
-			 	case event_pork_spot
-			  		strsend=bp(FromUserName,ToUserName,title_pork_spot,desc_pork_spot,pic_pork,news_pork_spot)
-				case event_pork_product
-			  'nickname=get_nickname(FromUserName)
-			 'strsend=post_template(FromUserName,ToUserName,nickname)	
-			  		strsend=bp(FromUserName,ToUserName,title_pork_product,desc_pork_product,pic_pork,news_pork_product)	 
-				case event_beef_product	
-			  		strsend=bp(FromUserName,ToUserName,title_beef_product,desc_beef_product,pic_beef,news_beef_product)	 			  		
+     			case event_lamb_product  '羊产品'
+			  		strsend=bp(FromUserName,ToUserName,title_lamb_product,desc_lamb_product,pic_lamb,news_lamb_product)
+     			case event_beef_product  '牛产品'
+			  		strsend=bp(FromUserName,ToUserName,title_beef_product,desc_beef_product,pic_beef,news_beef_product)
+			 	case event_chicken_product  '鸡产品'
+			  		strsend=bp(FromUserName,ToUserName,title_chicken_product,desc_chicken_product,pic_chicken,news_chicken_product)
+			 	case event_pork_product    '猪产品'
+			  		strsend=bp(FromUserName,ToUserName,title_pork_product,desc_pork_product,pic_pork,news_pork_product)
+				case event_pork_b2b   '背对背猪产品'
+			  		strsend=bp(FromUserName,ToUserName,title_pork_b2b,desc_pork_b2b,pic_pork,news_pork_b2b)	 
+				case event_beef_b2b  '背对背牛产品'
+			  		strsend=bp(FromUserName,ToUserName,title_beef_b2b,desc_beef_b2b,pic_beef,news_beef_b2b)	 			  		
 			end select
 
 		else  '没有标签返回提示信息'
